@@ -62,3 +62,35 @@ try {
 } catch (e) {
     console.log('Scenario 6 passed');
 }
+
+// Scenario 7: successful money withdrawal
+try {
+    bank.withdraw(1234567890, 5000)
+    console.log('Scenario 7 passed');
+} catch (e) {
+    console.log('Scenario 7 failed');
+}
+
+// Scenario 8 : unsuccessful money withdrawal due to invalid amount
+try {
+    bank.withdraw(1234567890, -5000)
+    console.log('Scenario 8 failed');
+} catch (e) {
+    console.log('Scenario 8 passed');
+}
+
+// Scenario 9: unsuccessful money withdrawal due to insufficient balance
+try {
+    bank.withdraw(1234567890, 10000)
+    console.log('Scenario 9 failed');
+} catch (e) {
+    console.log('Scenario 9 passed');
+}
+
+// Scenario 10: unsuccessful money withdrawal due to invalid account
+try {
+    bank.withdraw(123456789, 5000)
+    console.log('Scenario 10 failed');
+} catch (e) {
+    console.log('Scenario 10 passed');
+}

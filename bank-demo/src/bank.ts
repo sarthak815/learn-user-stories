@@ -75,4 +75,26 @@ export class Bank implements BankType {
         account.balance += amount;
         return true;
     }
+
+    /**
+     * Withdraws a specified amount from the account with the given account number.
+     *
+     * @param accountNumber - The number of the account to withdraw from.
+     * @param amount - The amount of money to withdraw.
+     * @returns A boolean indicating whether the withdrawal was successful.
+     */
+    withdraw(accountNumber: number, amount: number): Boolean {
+        const account = this.findAccountById(accountNumber);
+        if (!account) {
+            throw new Error('User not found');
+        }
+        if (amount < 0) {
+            throw new Error('Invalid amount');
+        }
+        if (account.balance < amount) {
+            throw new Error('Insufficient balance');
+        }
+        account.balance -= amount;
+        return true;
+    }
 }
