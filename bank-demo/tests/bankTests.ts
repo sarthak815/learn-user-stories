@@ -41,6 +41,9 @@ catch (e) {
 // Scenario 4: successful money deposit
 try {
     bank.deposit(1234567890, 5000)
+    if (bank.checkBalance(1234567890) !== 10000) {
+        console.log('Scenario 4 failed');
+    }
     console.log('Scenario 4 passed');
 }
 catch (e) {
@@ -66,6 +69,9 @@ try {
 // Scenario 7: successful money withdrawal
 try {
     bank.withdraw(1234567890, 5000)
+    if (bank.checkBalance(1234567890) !== 5000) {
+        console.log('Scenario 7 failed');
+    }
     console.log('Scenario 7 passed');
 } catch (e) {
     console.log('Scenario 7 failed');
@@ -93,4 +99,24 @@ try {
     console.log('Scenario 10 failed');
 } catch (e) {
     console.log('Scenario 10 passed');
+}
+
+// Scenario 11: successful balance check
+try {
+    bank.checkBalance(1234567890)
+    if (bank.checkBalance(1234567890) !== 5000) {
+        console.log('Scenario 11 failed');
+    }
+    console.log('Scenario 11 passed');
+} catch (e) {
+    console.log('Scenario 11 failed');
+}
+
+// Scenario 12 : unsuccessful balance check due to invalid account number
+try {
+    bank.checkBalance(123456789)
+    console.log('Scenario 12 failed');
+}
+catch (e) {
+    console.log('Scenario 12 passed');
 }
