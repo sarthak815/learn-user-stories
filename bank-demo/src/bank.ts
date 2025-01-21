@@ -23,9 +23,23 @@ export class Bank implements BankType {
     private findAccountById(id: number): AccountType | undefined {
         return this.accounts.find(account => account.id === id);
     }
+
+    /**
+     * Checks if the provided account number is invalid.
+     *
+     * An account number is considered invalid if its length is not equal to 10 digits.
+     *
+     * @param accountNumber - The account number to validate.
+     * @returns `true` if the account number is invalid, otherwise `false`.
+     */
     private isAccountNumberInvalid(accountNumber: number): boolean {
         return accountNumber.toString().length !== 10;
     }
+    /**
+     * 
+     * @param username 
+     * @returns true if username exists, false otherwise
+     */
     private isUsernameExisits(username: string): boolean {
         return this.usernames.includes(username);
     }
@@ -103,8 +117,8 @@ export class Bank implements BankType {
      *
      * @param accountNumber - The number of the account to check the balance of.
      * @returns The balance of the account
-     * @throws An error if the account is not found.
-        */
+     * @throws An error if the account number is invalid
+    */
     checkBalance(accountNumber: number): number {
         const account = this.findAccountById(accountNumber);
         if (!account) {
